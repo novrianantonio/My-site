@@ -4,7 +4,7 @@ var reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* tema + menu */
 var tbtn=document.getElementById("theme"),mbtn=document.getElementById("menubtn"),menu=document.getElementById("menu"),tl=document.getElementById("tlabel");
-function label(){var d=root.dataset.theme==="dark";tl.textContent=d?"Mode gelap":"Mode terang";tbtn.setAttribute("aria-pressed",d)}
+function label(){var d=root.dataset.theme==="dark";tl.textContent=d?"Mode terang":"Mode gelap";tbtn.setAttribute("aria-label",d?"Ganti ke mode terang":"Ganti ke mode gelap")}
 function setTheme(t){root.dataset.theme=t;try{localStorage.setItem("tema",t)}catch(e){}label()}
 label();
 tbtn.addEventListener("click",function(){
@@ -17,6 +17,7 @@ tbtn.addEventListener("click",function(){
 });
 function toggleMenu(o){
   var open=o===undefined?!menu.classList.contains("open"):o;
+  if(open)menu.style.setProperty("--mh",menu.querySelector(".mi").offsetHeight+"px");
   menu.classList.toggle("open",open);mbtn.classList.toggle("open",open);
   mbtn.setAttribute("aria-expanded",open);menu.setAttribute("aria-hidden",!open);
 }
@@ -75,7 +76,7 @@ try{
 }catch(e){}
 
 /* cahaya putih di panel kaca */
-var near=40;
+var near=24;
 function glow(e){
   document.querySelectorAll(".glass").forEach(function(el){
     var r=el.getBoundingClientRect();
