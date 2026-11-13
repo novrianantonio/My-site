@@ -22,7 +22,11 @@ function toggleMenu(o){
   mbtn.setAttribute("aria-expanded",open);menu.setAttribute("aria-hidden",!open);
 }
 mbtn.addEventListener("click",function(){toggleMenu()});
-document.addEventListener("click",function(e){if(!menu.contains(e.target)&&!mbtn.contains(e.target))toggleMenu(false)});
+document.addEventListener("click",function(e){
+  if(!menu.classList.contains("open")||mbtn.contains(e.target))return;
+  if(e.target.closest("#theme, .seg button"))return;
+  toggleMenu(false);
+});
 addEventListener("keydown",function(e){if(e.key==="Escape")toggleMenu(false)});
 
 /* sisi teknis dan kreatif */
