@@ -92,6 +92,10 @@ addEventListener("pointerup",function(e){if(e.pointerType!=="mouse")off()});
 addEventListener("pointercancel",off);
 document.addEventListener("mouseleave",off);
 
+/* lensa kaca: indikator tab membesar saat ditekan */
+["pointerdown"].forEach(function(t){bar.addEventListener(t,function(){ind.classList.add("hold")})});
+["pointerup","pointercancel","pointerleave"].forEach(function(t){bar.addEventListener(t,function(){ind.classList.remove("hold")})});
+
 /* cadangan transisi untuk browser lama */
 if(!("onpagereveal" in window)){
   document.addEventListener("click",function(e){
