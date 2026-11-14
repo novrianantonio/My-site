@@ -29,32 +29,28 @@ document.addEventListener("click",function(e){
 });
 addEventListener("keydown",function(e){if(e.key==="Escape")toggleMenu(false)});
 
-/* sisi teknis dan kreatif */
-var segBtns=menu.querySelectorAll("[data-sisi]"),busy=false;
-function segSync(){segBtns.forEach(function(b){b.classList.toggle("on",b.dataset.sisi===root.dataset.tone)})}
+/* sisi teknis dan kreatif: seluruh web berganti tampilan */
+var segBtns=menu.querySelectorAll("[data-sisi]");
+function segSync(){segBtns.forEach(function(b){b.classList.toggle("on",b.dataset.sisi===root.dataset.sisi)})}
 segSync();
-function setSide(s){
-  if(busy||s===root.dataset.tone)return;
+function setSide(s,x,y){
+  if(s===root.dataset.sisi)return;
   try{localStorage.setItem("sisi",s)}catch(e){}
-  var old=root.dataset.tone;root.dataset.tone=s;segSync();
-  var out=document.querySelector('.side[data-s="'+old+'"]'),inn=document.querySelector('.side[data-s="'+s+'"]');
-  if(!out||!inn||reduced){root.dataset.sisi=s;return}
-  busy=true;var dir=s==="kreatif"?1:-1;
-  if(scrollY>60)scrollTo({top:0,behavior:"smooth"});
-  var a=out.animate([{opacity:1,transform:"none",filter:"blur(0px)"},{opacity:0,transform:"translateX("+(-dir*48)+"px) scale(.98)",filter:"blur(10px)"}],{duration:340,easing:"cubic-bezier(.4,0,1,1)",fill:"forwards"});
-  a.finished.then(function(){
-    root.dataset.sisi=s;a.cancel();
-    inn.querySelectorAll(".sh,.group>h2,.chip,.proj").forEach(function(el,i){
-      el.animate([{opacity:0,transform:"translateX("+dir*64+"px)",filter:"blur(12px)"},{opacity:1,transform:"none",filter:"blur(0px)"}],{duration:780,delay:Math.min(i*55,520),easing:"cubic-bezier(.22,1,.36,1)",fill:"backwards"});
-    });
-    setTimeout(function(){busy=false},500);
-  });
+  function apply(){root.dataset.sisi=s;root.dataset.tone=s;segSync();scrollTo(0,0)}
+  if(document.startViewTransition&&!reduced){
+    root.style.setProperty("--tx",x+"px");root.style.setProperty("--ty",y+"px");
+    root.classList.add("theming","swapside");
+    document.startViewTransition(apply).finished.finally(function(){root.classList.remove("theming","swapside")});
+  }else apply();
 }
-segBtns.forEach(function(b){b.addEventListener("click",function(){setSide(b.dataset.sisi);setTimeout(function(){toggleMenu(false)},520)})});
+segBtns.forEach(function(b){b.addEventListener("click",function(){
+  var r=b.getBoundingClientRect();setSide(b.dataset.sisi,r.left+r.width/2,r.top+r.height/2);
+  setTimeout(function(){toggleMenu(false)},520);
+})});
 document.addEventListener("click",function(e){
-  var c=e.target.closest(".sc[data-sisi]");
-  if(c){var s=c.dataset.sisi;try{localStorage.setItem("sisi",s)}catch(x){}root.dataset.tone=s;root.dataset.sisi=s;segSync()}
-},true);
+  var w=e.target.closest("[data-switch]");
+  if(w){e.preventDefault();setSide(w.dataset.switch,e.clientX,e.clientY)}
+});
 
 /* indikator tab: meluncur dari tab sebelumnya, melar sedikit dan memantul */
 var bar=document.querySelector(".bar"),ind=bar.querySelector(".ind"),tabs=bar.querySelectorAll("a");

@@ -8,22 +8,12 @@
 <script>(function(){var r=document.documentElement,t;try{t=localStorage.getItem("tema")}catch(e){}if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";r.dataset.theme=t;var q;try{q=localStorage.getItem("sisi")}catch(e){}q=q==="kreatif"?"kreatif":"teknis";r.dataset.sisi=q;r.dataset.tone=q;if(!("onpagereveal" in window))r.classList.add("fb");try{if(!sessionStorage.getItem("boot")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){r.classList.add("booting");sessionStorage.setItem("boot","1")}}catch(e){}})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <div id="boot"><div class="b-glow"></div><div class="b-hello"><span id="hw"></span></div><div class="b-logo"><div class="b-wrap"><div class="b-name"></div><div class="b-bar"><i></i></div><div class="b-sub">menyiapkan portofolio</div></div></div><button class="b-skip" type="button">Lewati</button></div>
-<div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="wrap">
-<main class="page">
-<h1 class="t">Kontak</h1>
-<div class="contacts">
-<div class="cc glass"><h3>YouTube</h3><p>@novrian_editz</p><a class="btn press" href="https://www.youtube.com/@novrian_editz" target="_blank" rel="noopener">Buka channel</a></div>
-<div class="cc glass"><h3>GitHub</h3><p>novrianantonio</p><a class="btn press" href="https://github.com/novrianantonio" target="_blank" rel="noopener">Buka profil</a></div>
-</div>
-</main>
-<footer>© 2026 Novrian Pratama Antonio</footer>
-</div>
+<div class="stage"><main class="page"><div class="skin" data-s="teknis"><div class="t-win"><div class="t-tb"><span class="t-dots"><i></i><i></i><i></i></span><span>kontak.sh — zsh</span></div><div class="t-term big"><div><span class="pr">$</span> cat kontak.txt</div><div class="row"><span class="mu">youtube</span><a href="https://www.youtube.com/@novrian_editz" target="_blank" rel="noopener">youtube.com/@novrian_editz</a></div><div class="row"><span class="mu">github</span><a href="https://github.com/novrianantonio" target="_blank" rel="noopener">github.com/novrianantonio</a></div><div><span class="pr">$</span> ./ganti_sisi --ke <a href="#" data-switch="kreatif">kreatif</a><span class="cur"></span></div></div></div></div><div class="skin" data-s="kreatif"><h1 class="k-h">Kontak</h1><div class="k-cs"><a class="k-cas" style="--c:var(--coral)" href="https://www.youtube.com/@novrian_editz" target="_blank" rel="noopener"><div class="k-lab"><b>YouTube</b><span>@novrian_editz</span></div><div class="k-reels"><i class="k-reel"></i><i class="k-reel"></i></div></a><a class="k-cas" style="--c:var(--sun)" href="https://github.com/novrianantonio" target="_blank" rel="noopener"><div class="k-lab"><b>GitHub</b><span>novrianantonio</span></div><div class="k-reels"><i class="k-reel"></i><i class="k-reel"></i></div></a></div><p class="k-hand big">kirim sinyal ya ~</p><a class="k-link" href="#" data-switch="teknis">atau lihat sisi teknisku →</a></div></main></div>
 <div class="dock">
 <nav class="bar glass" aria-label="Menu utama" data-i="4" style="--i:4"><span class="ind" aria-hidden="true"></span><a href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a><a href="tentang.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>Tentang</span></a><a href="skill.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span>Skill</span></a><a href="project.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Project</span></a><a href="kontak.html" class="on" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg><span>Kontak</span></a></nav>
 <button class="mode glass press" id="menubtn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span class="ham"><i></i><i></i><i></i></span></button>
@@ -32,9 +22,9 @@
 <button class="trow" id="theme" type="button"><span class="ticon"><svg class="sm" viewBox="0 0 24 24" aria-hidden="true"><mask id="mm" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><circle class="mc" cx="24" cy="0" r="8" fill="#000"/></mask><g mask="url(#mm)"><circle class="sc" cx="12" cy="12" r="5" fill="currentColor"/></g><g class="rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v2M12 20.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M1.5 12h2M20.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></g></svg></span><span id="tlabel">Mode gelap</span></button>
 <p class="mlabel">Portofolio</p>
 <div class="seg"><i class="thumb"></i><button type="button" data-sisi="teknis"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 7 5 5-5 5M12 18h7"/></svg><span>Teknis</span></button><button type="button" data-sisi="kreatif"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>Kreatif</span></button></div>
-<p class="mnote">Berlaku di halaman Skill dan Project</p>
+<p class="mnote">Mengubah tampilan seluruh web</p>
 </div></div>
 </div>
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>
